@@ -2,5 +2,8 @@ namespace CQRSKit.Configuration;
 
 public class CqrsKitBuilder
 {
-    public bool Logging { get; set; }
+    internal bool Logging { get; set; }
+
+    public void EnableLogging()
+        => Logging = true;
 }

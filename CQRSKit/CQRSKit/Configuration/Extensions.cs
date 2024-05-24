@@ -9,6 +9,9 @@ namespace CQRSKit.Configuration;
 
 public static class Extensions
 {
+    public static IServiceCollection AddCqrsKit(this IServiceCollection services, Action<CqrsKitBuilder> builder)
+        => services.AddCqrsKit(null, builder);
+    
     public static IServiceCollection AddCqrsKit(this IServiceCollection services,
         IEnumerable<Assembly>? assemblies = null, Action<CqrsKitBuilder>? builder = null)
     {
