@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Reflection;
 using CQRSKit.Commands.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
