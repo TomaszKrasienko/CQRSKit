@@ -16,7 +16,7 @@ internal sealed class CqrsDispatcher(
         await handler.HandleAsync(command, cancellationToken);
     }
 
-    public async Task<TResult> HandlerAsync<TResult>(IQuery<TResult> query, CancellationToken cancellationToken = default)
+    public async Task<TResult> HandleAsync<TResult>(IQuery<TResult> query, CancellationToken cancellationToken = default)
     {
         using var scope = serviceProvider.CreateScope();
         var handlerType = typeof(IQueryHandler<,>).MakeGenericType(query.GetType(), typeof(TResult));

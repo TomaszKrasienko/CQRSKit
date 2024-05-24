@@ -8,5 +8,5 @@ public interface ICqrsDispatcher
     Task HandleAsync<TCommand>(TCommand command, CancellationToken cancellationToken = default) 
         where TCommand : class, ICommand;
 
-    Task<TResult> HandlerAsync<TResult>(IQuery<TResult> query, CancellationToken cancellationToken = default);
+    Task<TResult> HandleAsync<TResult>(IQuery<TResult> query, CancellationToken cancellationToken = default);
 }
