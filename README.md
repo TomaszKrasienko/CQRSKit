@@ -16,13 +16,30 @@ An interface that manages the distribution of commands and queries to appropriat
 - **Validation:**
 Support for validating commands and queries before processing them. The library allows defining validation rules that can be applied automatically before performing operations.
 
-### Use Example
-
+## Use Example
 #### ICommand
 ```csharp
-public class CreateUserCommand : ICommand
+public sealed record CreateUserCommand(Guid Id, string FullName) : ICommand;
+```
+```csharp
+internal sealed class CreateUserCommandHandler : ICommandHandler<CreateUserCommand>
 {
-    public string UserName { get; set; }
-    public string Email { get; set; }
+    public Task HandleAsync(CreateUserCommand command, CancellationToken cancellationToken = default)
+    {
+        [...]
+    }
 }
-
+```
+#### IQuery
+```csharp
+public sealed record GetUserQuery(Guid Id) : IQuery<UserDto>;
+```
+```csharp
+internal sealed class GetUserQueryHandler : IQueryHandler<GetUserQuery, UserDto>
+{
+    public Task<UserDto> HandleAsync(GetUserQuery query, CancellationToken cancellationToken = default)
+    {
+        [...]
+    }
+}
+```
