@@ -9,7 +9,7 @@ internal sealed class CommandHandlerLogDecorator<TCommand>(
 {
     public async Task HandleAsync(TCommand command, CancellationToken cancellationToken = default)
     {
-        logger.LogInformation($"Handling command: {command.GetType()}");
+        logger.LogInformation($"Handling command: {typeof(TCommand)}");
         try
         {
             await handler.HandleAsync(command, cancellationToken);
@@ -17,6 +17,7 @@ internal sealed class CommandHandlerLogDecorator<TCommand>(
         catch (Exception ex)
         {
             logger.LogInformation(ex, ex.Message);
+            throw;
         }
     }
 }
