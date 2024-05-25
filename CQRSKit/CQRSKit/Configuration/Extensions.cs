@@ -23,7 +23,7 @@ public static class Extensions
 
         if (builder is not null)
         {
-            var builderInstance = new CqrsKitBuilder();
+            var builderInstance = new CqrsKitBuilder(services);
             builder(builderInstance);
             if (builderInstance.Logging)
             {
@@ -33,6 +33,4 @@ public static class Extensions
         
         return services;
     }
-    
-    
 }
