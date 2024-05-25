@@ -30,6 +30,12 @@ internal sealed class CreateUserCommandHandler : ICommandHandler<CreateUserComma
     }
 }
 ```
+#### Minimal API use
+```csharp
+app.MapPost("users/create", async (CreateUserCommand command, ICqrsDispatcher dispatcher, CancellationToken cancellationToken) 
+    => await dispatcher.HandleAsync(command, cancellationToken));
+```
+
 #### IQuery
 ```csharp
 public sealed record GetUserQuery(Guid Id) : IQuery<UserDto>;
@@ -42,4 +48,9 @@ internal sealed class GetUserQueryHandler : IQueryHandler<GetUserQuery, UserDto>
         [...]
     }
 }
+```
+#### Minimal API use
+```csharp
+app.MapGet("users/{id:guid}", async (Guid id, ICqrsDispatcher dispatcher, CancellationToken cancellationToken) 
+    => await dispatcher.HandleAsync(new GetUserQuery(id), cancellationToken));
 ```
