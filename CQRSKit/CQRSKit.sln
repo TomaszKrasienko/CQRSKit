@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRSKit", "CQRSKit\CQRSKit.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.App", "Test.App\Test.App.csproj", "{18967263-B556-4628-AF37-6BA764933B42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRSKit.FluentValidation", "CQRSKit.FluentValidation\CQRSKit.FluentValidation.csproj", "{504CB8CC-6499-4B57-B75D-AC9638E110F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{18967263-B556-4628-AF37-6BA764933B42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18967263-B556-4628-AF37-6BA764933B42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18967263-B556-4628-AF37-6BA764933B42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{504CB8CC-6499-4B57-B75D-AC9638E110F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{504CB8CC-6499-4B57-B75D-AC9638E110F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{504CB8CC-6499-4B57-B75D-AC9638E110F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{504CB8CC-6499-4B57-B75D-AC9638E110F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
