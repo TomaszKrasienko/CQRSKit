@@ -9,10 +9,10 @@ namespace CQRSKit.Configuration;
 
 public static class Extensions
 {
-    public static IServiceCollection AddCqrsKit(this IServiceCollection services, Action<CqrsKitBuilder> builder)
+    public static CqrsKitServiceCollection AddCqrsKit(this IServiceCollection services, Action<CqrsKitBuilder> builder)
         => services.AddCqrsKit(null, builder);
     
-    public static IServiceCollection AddCqrsKit(this IServiceCollection services,
+    public static CqrsKitServiceCollection AddCqrsKit(this IServiceCollection services,
         IEnumerable<Assembly>? assemblies = null, Action<CqrsKitBuilder>? builder = null)
     {
         assemblies ??= AppDomain.CurrentDomain.GetAssemblies();
@@ -31,6 +31,9 @@ public static class Extensions
             }
         }
         
-        return services;
+        return new CqrsKitServiceCollection(services);
     }
+
+    public static IServiceCollection Configure(this CqrsKitServiceCollection cqrsKitServiceCollection)
+        => cqrsKitServiceCollection.Services;
 }
