@@ -6,4 +6,6 @@ public sealed class CqrsKitFluentValidationBuilder
 
     public void SetRequiredCommandsValidation()
         => AllCommands = true;
+    
+    
 }
