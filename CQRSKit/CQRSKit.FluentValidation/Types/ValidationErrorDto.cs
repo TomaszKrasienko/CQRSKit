@@ -2,12 +2,13 @@ namespace CQRSKit.FluentValidation.Types;
 
 public class ValidationErrorDto
 {
-    public Type CommandType { get; private set; }
+    private readonly Type _commandType;
+    public string CommandType => _commandType.Name;
     public List<string> Messages { get; private set; }
 
     internal ValidationErrorDto(Type commandType, List<string> messages)
     {
-        CommandType = commandType;
+        _commandType = commandType;
         Messages = messages;
     }
 }
