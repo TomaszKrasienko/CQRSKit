@@ -3,6 +3,7 @@ using CQRSKit.Commands.Configuration;
 using CQRSKit.Dispatchers.Configuration;
 using CQRSKit.Logging.Configuration;
 using CQRSKit.Queries.Configuration;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CQRSKit.Configuration;
@@ -27,7 +28,7 @@ public static class Extensions
             builder(builderInstance);
             if (builderInstance.Logging)
             {
-                services.AddLogging();
+                services.AddCqrsKitLogging();
             }
         }
         
@@ -36,4 +37,7 @@ public static class Extensions
 
     public static IServiceCollection Configure(this CqrsKitServiceCollection cqrsKitServiceCollection)
         => cqrsKitServiceCollection.Services;
+
+    public static WebApplication UseCqrsKit(this WebApplication app)
+        => app;
 }
