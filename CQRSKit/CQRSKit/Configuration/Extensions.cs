@@ -32,7 +32,7 @@ public static class Extensions
             }
         }
         
-        return new CqrsKitServiceCollection(services);
+        return CqrsKitServiceCollection.Create(services);
     }
 
     public static IServiceCollection Configure(this CqrsKitServiceCollection cqrsKitServiceCollection)
