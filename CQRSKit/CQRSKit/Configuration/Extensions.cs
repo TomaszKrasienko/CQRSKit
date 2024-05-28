@@ -38,6 +38,7 @@ public static class Extensions
     public static IServiceCollection Configure(this CqrsKitServiceCollection cqrsKitServiceCollection)
         => cqrsKitServiceCollection.Services;
 
-    public static WebApplication UseCqrsKit(this WebApplication app)
-        => app;
+    public static CqrsKitApplication UseCqrsKit(this WebApplication app)
+        => CqrsKitApplication.Create(app);
+    
 }

@@ -22,6 +22,10 @@ public static class Extensions
         return cqrsKitServiceCollection;
     }
 
-    public static WebApplication UseValidation(this WebApplication app)
-        => app.UseValidationMiddleware();
+    public static CqrsKitApplication UseFluentValidation(this CqrsKitApplication cqrsKitApp)
+    {
+        cqrsKitApp.App
+            .UseValidationMiddleware();
+        return cqrsKitApp;
+    }
 }
