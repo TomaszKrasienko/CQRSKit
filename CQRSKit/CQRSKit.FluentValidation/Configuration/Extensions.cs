@@ -1,6 +1,7 @@
 using CQRSKit.Configuration;
 using CQRSKit.FluentValidation.Decorators.Configuration;
 using CQRSKit.FluentValidation.Middleware;
+using CQRSKit.FluentValidation.Middleware.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,18 +15,13 @@ public static class Extensions
     {
         var builderInstance = new CqrsKitFluentValidationBuilder(cqrsKitServiceCollection.Services);
         builder(builderInstance);
-        cqrsKitServiceCollection
-            .Services.AddSingleton(builderInstance);
         cqrsKitServiceCollection.Services
-            .AddDecorators();
-        cqrsKitServiceCollection.Services
-            .AddSingleton<ValidationMiddleware>();
+            .AddSingleton(builderInstance)
+            .AddDecorators()
+            .AddValidationMiddleware();
         return cqrsKitServiceCollection;
     }
 
     public static WebApplication UseValidation(this WebApplication app)
-    {
-        app.UseMiddleware<ValidationMiddleware>();
-        return app;
-    }
+        => app.UseValidationMiddleware();
 }
